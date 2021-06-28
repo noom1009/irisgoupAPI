@@ -1,0 +1,1 @@
+## config nginx for work load balance nginx by proxy
