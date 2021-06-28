@@ -105,6 +105,84 @@ class userModel {
         });
       });
   }
+
+  static findcountUsers() {
+    return UserDB.findAndCountAll({
+      where: {
+        f_status: 0,
+      },
+    })
+      .then((result) => {
+        console.log(result.count);
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  static deleteUsers(f_acc_id) {
+    return UserDB.destroy({
+      where: { f_acc_id: f_acc_id },
+    })
+      .then((result) => {
+        console.log(result);
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  static approveUsers(f_acc_id) {
+    return UserDB.update(
+      {
+        f_status: 1,
+      },
+      {
+        where: { f_acc_id: f_acc_id },
+      }
+    )
+      .then((result) => {
+        console.log(result);
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  static findUserone(f_acc_id) {
+    return UserDB.findByPk(f_acc_id)
+      .then((result) => {
+        console.log(result);
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  static updateUsers(f_acc_id, sqlupdate) {
+    return UserDB.update(
+      {
+        f_name: sqlupdate.f_name,
+        f_lastname: sqlupdate.f_lastname,
+        f_login_name: sqlupdate.f_login_name,
+        f_status: sqlupdate.f_status,
+        f_admin_status: sqlupdate.f_admin_status,
+        f_accounttype: sqlupdate.f_accounttype,
+      },
+      { where: { f_acc_id: f_acc_id } }
+    )
+      .then((result) => {
+        console.log(result);
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 }
 
 module.exports = userModel;
