@@ -24,6 +24,10 @@ db.sequelize = sequelize;
 db.UserDB = require("../schema/tblAccount/index")(sequelize, Sequelize);
 db.AuthenDB = require("../schema/tblAccount/auth")(sequelize, Sequelize);
 db.CompanyDB = require("../schema/tblCompany/index")(sequelize, Sequelize);
+db.BankDB = require("../schema/tblbank/index")(sequelize, Sequelize);
+db.BookingDB = require("../schema/tblbooking/index")(sequelize, Sequelize);
+db.FindownDB = require("../schema/tblFindown/index")(sequelize, Sequelize);
+db.FinloanDB = require("../schema/tblFinloan/index")(sequelize, Sequelize);
 db.DepartmentDB = require("../schema/tblDepartment/index")(
   sequelize,
   Sequelize
