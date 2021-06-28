@@ -1,0 +1,17 @@
+### Create Connect Database 
+- db.UserDB 
+- db.AuthenDB
+- db.CompanyDB
+- db.BankDB 
+- db.BookingDB 
+- db.FindownDB 
+- db.FinloanDB 
+- db.FinotherDB 
+- db.GroupUserDB
+- db.GroupProDB 
+- db.PositionDB
+- db.PricelistDB 
+- db.ProitemDB 
+- db.ProjectDB
+- db.FintranferDB
+- db.DepartmentDB
