@@ -1,5 +1,6 @@
 const request = require("supertest");
 const app = require("../server");
+const groupProControllers = require("../controllers/groupProControllers");
 describe("Post Endpoints", () => {
   it("should create a new post", async () => {
     const res = await request(app).post("/grouppro").send({

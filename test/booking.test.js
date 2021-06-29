@@ -1,5 +1,6 @@
 const request = require("supertest");
 const app = require("../server");
+const bookingControllers = require("../controllers/bookingControllers");
 describe("Post Endpoints", () => {
   it("should create a new post", async () => {
     const res = await request(app).post("/booking").send({

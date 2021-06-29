@@ -19,4 +19,10 @@ router.get(
   function (req, res, next) {}
 );
 
+router.post(
+  "/",
+  receiptControllers.getPageController,
+  function (req, res, next) {}
+);
+
 module.exports = router;

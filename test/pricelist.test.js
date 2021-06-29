@@ -1,5 +1,6 @@
 const request = require("supertest");
 const app = require("../server");
+const priceListControllers = require("../controllers/priceListControllers");
 describe("Post Endpoints", () => {
   it("should create a new post", async () => {
     const res = await request(app).post("/pricelist").send({
