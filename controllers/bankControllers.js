@@ -12,9 +12,8 @@ const bcrypt = require("bcrypt");
 const md5 = require("md5");
 const nodemailer = require("nodemailer");
 const db = require("../models/index");
-const bankModel = require("../models/bankModel/index");
 const sequelize = db.sequelize;
-const BankDB = db.BankDB;
+
 const env = require("../config/env");
 const setting = require("../config/setting");
 const saltRounds = env.saltRounds;
@@ -28,6 +27,8 @@ const upload = multer({ dest: "uploads/" });
 const now = new Date();
 const dateString = moment(now).tz("Asia/Bangkok").format("D/M/Y");
 const dateFormat = moment(now).tz("Asia/Bangkok").format("YYYY-MM-DD hh:mm:ss");
+const bankModel = require("../models/bankModel/index");
+const BankDB = db.BankDB;
 
 exports.getPageController = async (req, res, next) => {
   BankDB.findAll()

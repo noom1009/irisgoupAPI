@@ -27,6 +27,7 @@ const now = new Date();
 const dateString = moment(now).tz("Asia/Bangkok").format("D/M/Y");
 const dateFormat = moment(now).tz("Asia/Bangkok").format("YYYY-MM-DD hh:mm:ss");
 const UserModel = require("../models/userModel/index");
+const AuthenDB = db.AuthenDB;
 
 exports.getPageController = async (req, res, next) => {
   res.json("Authen");
