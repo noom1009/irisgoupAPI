@@ -17,7 +17,6 @@ const env = require("../config/env");
 const setting = require("../config/setting");
 const saltRounds = env.saltRounds;
 const lang = require("../lang/langApp");
-const con = require("../config/mysql");
 let tsData = Date.now();
 const moment = require("moment");
 const momentTZ = require("moment-timezone");
