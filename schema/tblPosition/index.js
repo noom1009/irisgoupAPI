@@ -9,49 +9,25 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
-      f_groupcode: {
+      f_positionname: {
         type: Sequelize.STRING,
-        field: "f_groupcode",
+        field: "f_positionname",
       },
-      f_procode: {
+      f_positioncode: {
         type: Sequelize.STRING,
-        field: "f_procode",
+        field: "f_positioncode",
       },
-      f_project: {
+      f_mobileext: {
         type: Sequelize.STRING,
-        field: "f_project",
+        field: "f_mobileext",
       },
-      f_promotion: {
+      f_mgrcode: {
         type: Sequelize.STRING,
-        field: "f_promotion",
-      },
-      f_promotiondetail: {
-        type: Sequelize.STRING,
-        field: "f_promotiondetail",
-      },
-      f_startdate: {
-        type: Sequelize.STRING,
-        field: "f_startdate",
-      },
-      f_enddate: {
-        type: Sequelize.STRING,
-        field: "f_enddate",
+        field: "f_mgrcode",
       },
       f_status: {
         type: Sequelize.STRING,
         field: "f_status",
-      },
-      f_countdowndate: {
-        type: Sequelize.STRING,
-        field: "f_countdowndate",
-      },
-      f_type: {
-        type: Sequelize.STRING,
-        field: "f_type",
-      },
-      f_pricepor: {
-        type: Sequelize.STRING,
-        field: "f_pricepor",
       },
     },
     {
