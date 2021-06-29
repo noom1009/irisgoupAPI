@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("../server");
+const app = require("../application");
 const proItemsControllers = require("../controllers/proItemsControllers");
 describe("Post Endpoints", () => {
   it("should create a new post", async () => {
