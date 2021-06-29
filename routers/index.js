@@ -9,6 +9,7 @@ const lang = require("../lang/langApp");
 
 const pageRouter = require("./pages/index");
 const bankRouter = require("./bank/index");
+const bookingRouter = require("./booking/index");
 const companyRouter = require("./company/index");
 const departmentRouter = require("./department/index");
 const finDownRouter = require("./finDown/index");
@@ -32,8 +33,10 @@ const authenRouter = require("./authen/index");
 
 router.use("/", pageRouter);
 router.use("/bank", bankRouter);
+router.use("/booking", bookingRouter);
 router.use("/company", companyRouter);
 router.use("/department", departmentRouter);
+router.use("/quotation", quotationRouter);
 router.use("/findown", finDownRouter);
 router.use("/finloan", finLoanRouter);
 router.use("/finother", finOtherRouter);
@@ -50,7 +53,7 @@ router.use("/roomplan", roomPlanRouter);
 router.use("/running", runningRouter);
 router.use("/targetplan", targetPlanRouter);
 router.use("/upload", uploadRouter);
-router.use("/user", usersRouter);
+router.use("/users", usersRouter);
 router.use("/authen", authenRouter);
 
 module.exports = router;
