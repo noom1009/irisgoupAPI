@@ -7,6 +7,8 @@ var con = mysql.createPool({
   database: env.database,
   port: env.port,
   connectionLimit: 10,
+  dateStrings: true,
+  multipleStatements: true,
 });
 /*
 con.getConnection(function (err) {
