@@ -30,12 +30,12 @@ const dateFormat = moment(now).tz("Asia/Bangkok").format("YYYY-MM-DD hh:mm:ss");
 const bankModel = require("../models/bankModel/index");
 const BankDB = db.BankDB;
 
-exports.getPageController = async (req, res, next) => {
+exports.getPageController = (req, res, next) => {
   BankDB.findAll()
     .then((result) => {
       res.status(201).json({
         data: result,
-        message: "success",
+        message: lang.readeDatabase,
       });
     })
     .catch((error) => {
@@ -43,6 +43,75 @@ exports.getPageController = async (req, res, next) => {
         message: error,
       });
     });
+};
+
+exports.saveController = (req, res, next) => {
+  const Bank = new bankModel({
+    f_bankname: req.body.f_bankname,
+    f_branch: req.body.f_branch,
+    f_name: req.body.f_name,
+    f_number: req.body.f_number,
+    f_codebank: req.body.f_codebank,
+    f_logo: req.body.f_logo,
+    f_status: req.body.f_status,
+    f_defalut: "0",
+  });
+  Bank.saveAll()
+    .then((result) => {
+      res.status(201).json({
+        message: lang.readeDatabase,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: error + ': ' +lang.createDataError,
+      });
+    });
+};
+exports.updateController = (req, res, next) => {
+  const f_code = req.params.id;
+  bankModel.update(f_code,req.body)
+  .then(function (result) {
+    res.status(201).json({
+      message: lang.readeDatabase,
+    });
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: err +': '+ lang.updateDataError + ': ' + id
+    });
+  });
+};
+exports.searchController = (req, res, next) => {
+  const f_code = req.params.id;
+  bankModel.finOne(f_code)
+    .then((result) => {
+      res.status(201).json({
+        message: lang.readeDatabase,
+        resultUsers : result,
+      });
+    })
+   .catch((error) => {
+          res.status(500).json({
+            message: error,
+          });
+        });
+
+};
+exports.deleteController = (req, res, next) => {
+  const f_code = req.params.id;
+  bankModel.delete(f_code)
+  .then(function (result) {
+    res.status(201).json({
+      message: lang.readeDatabase,
+      resultUsers : result,
+    });
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: err +': '+ lang.updateDataError + ': ' + id
+    });
+  });
 };
 
 exports.bankController = (req, res, next) => {};
