@@ -15,5 +15,7 @@ const langApp = {
   usersSuccess: "Success",
   emptyData: "กรุณากรอกข้อมูลส่งมาด้วย",
   messagesEmpty: "",
+  loginFailed: "Authentication failed",
+  logOut:"Logout successfully!",
 };
 module.exports = langApp;

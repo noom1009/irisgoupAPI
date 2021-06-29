@@ -1,0 +1,4 @@
+POST http://localhost:8180/authen/login
+Content-Type: application/json
+
+{"f_login_name":"admin2@iris.co.th","f_login_password":"123456789"}

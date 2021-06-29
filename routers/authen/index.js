@@ -20,8 +20,15 @@ router.get(
 );
 
 router.post(
-  "/",
-  authenControllers.getPageController,
+  "/login",
+  authenControllers.logInController,
   function (req, res, next) {}
 );
+
+router.post(
+  "/logout",
+  authenControllers.logOutController,
+  function (req, res, next) {}
+);
+
 module.exports = router;

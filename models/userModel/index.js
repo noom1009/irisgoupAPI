@@ -90,9 +90,9 @@ class userModel {
       });
   }
 
-  static findByEmail({ f_email = "" }) {
-    return UserDB.findAll({
-      where: { f_email: 1 },
+  static findByEmail({ f_login_name = "" }) {
+    return UserDB.findOne({
+      where: { f_login_name: f_login_name, f_status: "1" },
     })
       .then((result) => {
         return result;
