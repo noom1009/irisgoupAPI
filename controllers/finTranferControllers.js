@@ -47,10 +47,14 @@ exports.getPageController = (req, res, next) => {
 
 exports.saveController = (req, res, next) => {
   const FinTranfer = new fintranferModel({
-    f_codeproject: req.body.f_codeproject,
-    f_projectname: req.body.f_projectname,
-    f_typehome: req.body.f_typehome,
-    f_detail: req.body.f_detail,
+    f_running: req.body.f_running,
+    f_unit: req.body.f_unit,
+    f_tranferdate: req.body.f_tranferdate,
+    f_price: req.body.f_price,
+    f_usertranfer1: req.body.f_usertranfer1,
+    f_usertranfer2: req.body.f_usertranfer2,
+    f_project: req.body.f_project,
+    f_status: req.body.f_status,
   });
   FinTranfer.saveAll()
     .then((result) => {
@@ -66,9 +70,9 @@ exports.saveController = (req, res, next) => {
 };
 
 exports.updateController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_running = req.params.id;
   fintranferModel
-    .update(f_code, req.body)
+    .update(f_running, req.body)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -82,9 +86,9 @@ exports.updateController = (req, res, next) => {
 };
 
 exports.searchController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_running = req.params.id;
   fintranferModel
-    .finOne(f_code)
+    .finOne(f_running)
     .then((result) => {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -99,9 +103,9 @@ exports.searchController = (req, res, next) => {
 };
 
 exports.deleteController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_running = req.params.id;
   fintranferModel
-    .delete(f_code)
+    .delete(f_running)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,

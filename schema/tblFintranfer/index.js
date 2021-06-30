@@ -2,28 +2,40 @@ module.exports = (sequelize, Sequelize) => {
   const fintranferSchema = sequelize.define(
     "tbl_fintranfer",
     {
-      f_code: {
+      f_running: {
         type: Sequelize.INTEGER,
-        field: "f_code",
+        field: "f_running",
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
       },
-      f_codeproject: {
+      f_unit: {
         type: Sequelize.STRING,
-        field: "f_codeproject",
+        field: "f_unit",
       },
-      f_projectname: {
+      f_tranferdate: {
         type: Sequelize.STRING,
-        field: "f_projectname",
+        field: "f_tranferdate",
       },
-      f_typehome: {
+      f_price: {
         type: Sequelize.STRING,
-        field: "f_typehome",
+        field: "f_price",
       },
-      f_detail: {
+      f_usertranfer1: {
         type: Sequelize.STRING,
-        field: "f_detail",
+        field: "f_usertranfer1",
+      },
+      f_usertranfer2: {
+        type: Sequelize.STRING,
+        field: "f_usertranfer2",
+      },
+      f_project: {
+        type: Sequelize.STRING,
+        field: "f_project",
+      },
+      f_status: {
+        type: Sequelize.STRING,
+        field: "f_status",
       },
     },
     {

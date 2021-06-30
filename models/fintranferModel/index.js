@@ -12,28 +12,38 @@ const Op = db.Sequelize.Op;
 
 class FinTranferModel {
   constructor({
-    f_code = "",
-    f_codeproject = "",
-    f_projectname = "",
-    f_detail = "",
-    f_typehome = "",
+    f_running = "",
+    f_unit = "",
+    f_tranferdate = "",
+    f_price = "",
+    f_usertranfer1 = "",
+    f_usertranfer2 = "",
+    f_project = "",
+    f_status = "",
   }) {
-    this.f_code = f_code;
-    this.f_codeproject = f_codeproject;
-    this.f_projectname = f_projectname;
-    this.f_detail = f_detail;
-    this.f_typehome = f_typehome;
+    this.f_running = f_running;
+    this.f_unit = f_unit;
+    this.f_tranferdate = f_tranferdate;
+    this.f_price = f_price;
+    this.f_usertranfer1 = f_usertranfer1;
+    this.f_usertranfer2 = f_usertranfer2;
+    this.f_project = f_project;
+    this.f_status = f_status;
   }
   saveAll() {
     const fintranfer = {
-      f_codeproject: this.f_codeproject,
-      f_projectname: this.f_projectname,
-      f_typehome: this.f_typehome,
-      f_detail: this.f_detail,
+      f_running: this.f_running,
+      f_unit: this.f_unit,
+      f_tranferdate: this.f_tranferdate,
+      f_price: this.f_price,
+      f_usertranfer1: this.f_usertranfer1,
+      f_usertranfer2: this.f_usertranfer2,
+      f_project: this.f_project,
+      f_status: this.f_status,
     };
     return FintranferDB.create(fintranfer)
       .then((result) => {
-        console.log(result);
+        //    console.log(result);
         return result;
       })
       .catch((err) => {
@@ -41,15 +51,19 @@ class FinTranferModel {
       });
   }
 
-  static update(f_code, sqlupdate) {
+  static update(f_running, sqlupdate) {
     return FintranferDB.update(
       {
-        f_codeproject: sqlupdate.f_codeproject,
-        f_projectname: sqlupdate.f_projectname,
-        f_typehome: sqlupdate.f_typehome,
-        f_detail: sqlupdate.f_detail,
+        f_running: sqlupdate.f_running,
+        f_unit: sqlupdate.f_unit,
+        f_tranferdate: sqlupdate.f_tranferdate,
+        f_price: sqlupdate.f_price,
+        f_usertranfer1: sqlupdate.f_usertranfer1,
+        f_usertranfer2: sqlupdate.f_usertranfer2,
+        f_project: sqlupdate.f_project,
+        f_status: sqlupdate.f_status,
       },
-      { where: { f_code: f_code } }
+      { where: { f_running: f_running } }
     )
       .then((result) => {
         console.log(result);
@@ -69,8 +83,8 @@ class FinTranferModel {
         console.log(err);
       });
   }
-  static findOne(f_code) {
-    return FintranferDB.findByPk(f_code)
+  static findOne(f_running) {
+    return FintranferDB.findByPk(f_running)
       .then((result) => {
         console.log(result);
         return result;
@@ -80,9 +94,9 @@ class FinTranferModel {
       });
   }
 
-  static delete(f_code) {
+  static delete(f_running) {
     return FintranferDB.destroy({
-      where: { f_code: f_code },
+      where: { f_running: f_running },
     })
       .then((result) => {
         return result;
@@ -92,13 +106,13 @@ class FinTranferModel {
       });
   }
 
-  static approve(f_code) {
+  static approve(f_running) {
     return FintranferDB.update(
       {
         f_status: 1,
       },
       {
-        where: { f_code: f_code },
+        where: { f_running: f_running },
       }
     )
       .then((result) => {
