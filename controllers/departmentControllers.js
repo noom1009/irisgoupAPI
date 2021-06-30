@@ -46,17 +46,15 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const department = new companyModel({
-    f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
+  const department = new departmentModel({
+    f_departmentname: req.body.f_departmentname,
+    f_departmentcode: req.body.f_departmentcode,
+    f_mobileext: req.body.f_mobileext,
+    f_mgrcode: req.body.f_mgrcode,
     f_status: req.body.f_status,
-    f_defalut: "0",
   });
-  department.saveAll()
+  department
+    .saveAll()
     .then((result) => {
       res.status(201).json({
         message: lang.readeDatabase,

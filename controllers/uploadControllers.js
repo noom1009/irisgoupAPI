@@ -46,15 +46,16 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const UploadFile = new quotationModel({
-    f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
-    f_status: req.body.f_status,
-    f_defalut: "0",
+  const UploadFile = new uploadModel({
+    f_running: req.body.f_running,
+    f_unit: req.body.f_unit,
+    f_userlogin: req.body.f_userlogin,
+    f_dataupload: req.body.f_dataupload,
+    f_fileupload: req.body.f_fileupload,
+    f_datesave: req.body.f_datesave,
+    f_project: req.body.f_project,
+    f_filetype: req.body.f_filetype,
+    f_typeupload: req.body.f_typeupload,
   });
   UploadFile.saveAll()
     .then((result) => {

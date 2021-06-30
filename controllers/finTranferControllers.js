@@ -46,15 +46,11 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const FinTranfer = new companyModel({
-    f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
-    f_status: req.body.f_status,
-    f_defalut: "0",
+  const FinTranfer = new fintranferModel({
+    f_codeproject: req.body.f_codeproject,
+    f_projectname: req.body.f_projectname,
+    f_typehome: req.body.f_typehome,
+    f_detail: req.body.f_detail,
   });
   FinTranfer.saveAll()
     .then((result) => {

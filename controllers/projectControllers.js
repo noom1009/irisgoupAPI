@@ -46,15 +46,25 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const project = new companyModel({
-    f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
+  const project = new projectModel({
+    f_projectname: req.body.f_projectname,
+    f_projectdetail: req.body.f_projectdetail,
+    f_building: req.body.f_building,
+    f_project: req.body.f_project,
+    f_color: req.body.f_color,
+    f_let: req.body.f_let,
+    f_long: req.body.f_long,
+    f_youtbue: req.body.f_youtbue,
+    f_foor: req.body.f_foor,
+    f_website: req.body.f_website,
+    f_mobile: req.body.f_mobile,
+    f_total: req.body.f_total,
+    f_linenotify: req.body.f_linenotify,
     f_status: req.body.f_status,
-    f_defalut: "0",
+    f_booking: req.body.f_booking,
+    f_contact: req.body.f_contact,
+    f_tranfer: req.body.f_tranfer,
+    f_codelaw: req.body.f_codelaw,
   });
   project
     .saveAll()
@@ -71,9 +81,9 @@ exports.saveController = (req, res, next) => {
 };
 
 exports.updateController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_codeproject = req.params.id;
   projectModel
-    .update(f_code, req.body)
+    .update(f_codeproject, req.body)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -87,9 +97,9 @@ exports.updateController = (req, res, next) => {
 };
 
 exports.searchController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_codeproject = req.params.id;
   projectModel
-    .finOne(f_code)
+    .finOne(f_codeproject)
     .then((result) => {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -104,9 +114,9 @@ exports.searchController = (req, res, next) => {
 };
 
 exports.deleteController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_codeproject = req.params.id;
   projectModel
-    .delete(f_code)
+    .delete(f_codeproject)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,

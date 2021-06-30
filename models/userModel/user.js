@@ -131,9 +131,9 @@ class usersModel {
       });
   }
 
-  static deleteUsers(f_acc_id) {
+  static deleteUsers(f_acc_code) {
     return UsersDB.destroy({
-      where: { f_acc_id: f_acc_id },
+      where: { f_acc_code: f_acc_code },
     })
       .then((result) => {
         console.log(result);
@@ -144,13 +144,13 @@ class usersModel {
       });
   }
 
-  static approveUsers(f_acc_id) {
+  static approveUsers(f_acc_code) {
     return UsersDB.update(
       {
         f_status: 1,
       },
       {
-        where: { f_acc_id: f_acc_id },
+        where: { f_acc_code: f_acc_code },
       }
     )
       .then((result) => {
@@ -162,8 +162,8 @@ class usersModel {
       });
   }
 
-  static findUserone(f_acc_id) {
-    return UsersDB.findByPk(f_acc_id)
+  static findUserone(f_acc_code) {
+    return UsersDB.findByPk(f_acc_code)
       .then((result) => {
         console.log(result);
         return result;
@@ -173,7 +173,7 @@ class usersModel {
       });
   }
 
-  static updateUsers(f_acc_id, sqlupdate) {
+  static updateUsers(f_acc_code, sqlupdate) {
     return UsersDB.update(
       {
         f_name: sqlupdate.f_name,
@@ -183,7 +183,7 @@ class usersModel {
         f_admin_status: sqlupdate.f_admin_status,
         f_accounttype: sqlupdate.f_accounttype,
       },
-      { where: { f_acc_id: f_acc_id } }
+      { where: { f_acc_code: f_acc_code } }
     )
       .then((result) => {
         console.log(result);

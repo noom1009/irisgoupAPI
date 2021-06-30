@@ -46,15 +46,15 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const RoomPlan = new quotationModel({
-    f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
+  const RoomPlan = new roomPlanModel({
+    f_unit: req.body.f_unit,
+    f_type: req.body.f_type,
+    f_project: req.body.f_project,
+    f_font: req.body.f_font,
+    f_confont: req.body.f_confont,
+    f_color: req.body.f_color,
+    f_grade: req.body.f_grade,
     f_status: req.body.f_status,
-    f_defalut: "0",
   });
   RoomPlan.saveAll()
     .then((result) => {

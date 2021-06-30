@@ -47,14 +47,31 @@ exports.getPageController = (req, res, next) => {
 
 exports.saveController = (req, res, next) => {
   const Quotation = new quotationModel({
+    f_running: req.body.f_running,
+    f_runningtype: req.body.f_runningtype,
+    f_project: req.body.f_project,
+    f_unit: req.body.f_unit,
+    f_type: req.body.f_type,
+    f_sq_m: req.body.f_sq_m,
+    f_sq_wa: req.body.f_sq_wa,
+    f_downpayment: req.body.f_downpayment,
+    f_booking: req.body.f_booking,
+    f_contact: req.body.f_contact,
+    f_down: req.body.f_down,
+    f_final_payment: req.body.f_final_payment,
+    f_promotion: req.body.f_promotion,
+    f_groupcode: req.body.f_groupcode,
+    f_totalprice: req.body.f_totalprice,
     f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
     f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
+    f_branch: req.body.f_branch,
+    f_priceother: req.body.f_priceother,
+    f_pricesum: req.body.f_pricesum,
+    f_datesave: req.body.f_datesave,
+    f_userlogin: req.body.f_userlogin,
     f_status: req.body.f_status,
-    f_defalut: "0",
+    f_customername: req.body.f_customername,
+    f_customer_tel: req.body.f_customer_tel,
   });
   Quotation.saveAll()
     .then((result) => {

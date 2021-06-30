@@ -46,15 +46,12 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const position = new companyModel({
-    f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
+  const position = new positionModel({
+    f_positionname: req.body.f_positionname,
+    f_positioncode: req.body.f_positioncode,
+    f_mobileext: req.body.f_mobileext,
+    f_mgrcode: req.body.f_mgrcode,
     f_status: req.body.f_status,
-    f_defalut: "0",
   });
   position
     .saveAll()

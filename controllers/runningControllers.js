@@ -46,15 +46,13 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const Running = new quotationModel({
-    f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
-    f_status: req.body.f_status,
-    f_defalut: "0",
+  const Running = new runningModel({
+    f_running_qutation: req.body.f_running_qutation,
+    f_running_booking: req.body.f_running_booking,
+    f_running_contact: req.body.f_running_contact,
+    f_countdownBooking: req.body.f_countdownBooking,
+    f_countdownContact: req.body.f_countdownContact,
+    f_running_receipt: req.body.f_running_receipt,
   });
   Running.saveAll()
     .then((result) => {

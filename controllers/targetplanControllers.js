@@ -46,15 +46,12 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const Targetplan = new quotationModel({
-    f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
-    f_status: req.body.f_status,
-    f_defalut: "0",
+  const Targetplan = new targetModel({
+    f_year: req.body.f_year,
+    f_month: req.body.f_month,
+    f_project: req.body.f_project,
+    f_unit: req.body.f_unit,
+    f_value: req.body.f_value,
   });
   Targetplan.saveAll()
     .then((result) => {
@@ -70,9 +67,9 @@ exports.saveController = (req, res, next) => {
 };
 
 exports.updateController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_id = req.params.id;
   targetModel
-    .update(f_code, req.body)
+    .update(f_id, req.body)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -86,9 +83,9 @@ exports.updateController = (req, res, next) => {
 };
 
 exports.searchController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_id = req.params.id;
   targetModel
-    .finOne(f_code)
+    .finOne(f_id)
     .then((result) => {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -103,9 +100,9 @@ exports.searchController = (req, res, next) => {
 };
 
 exports.deleteController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_id = req.params.id;
   targetModel
-    .delete(f_code)
+    .delete(f_id)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,

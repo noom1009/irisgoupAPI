@@ -45,15 +45,18 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const groupPro = new companyModel({
-    f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
+  const groupPro = new groupProModel({
+    f_groupcode: req.body.f_groupcode,
+    f_procode: req.body.f_procode,
+    f_project: req.body.f_project,
+    f_promotion: req.body.f_promotion,
+    f_promotiondetail: req.body.f_promotiondetail,
+    f_startdate: req.body.f_startdate,
+    f_enddate: req.body.f_enddate,
     f_status: req.body.f_status,
-    f_defalut: "0",
+    f_countdowndate: req.body.f_countdowndate,
+    f_type: req.body.f_type,
+    f_pricepor: req.body.f_pricepor,
   });
   groupPro
     .saveAll()

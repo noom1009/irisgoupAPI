@@ -45,15 +45,28 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const Finloan = new companyModel({
+  const Finloan = new finLoanModel({
+    f_running: req.body.f_running,
+    f_unit: req.body.f_unit,
+    f_customer: req.body.f_customer,
+    f_contactstart: req.body.f_contactstart,
+    f_dateapply: req.body.f_dateapply,
+    f_bankshortname: req.body.f_bankshortname,
     f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
+    f_bankstatus: req.body.f_bankstatus,
+    f_grade: req.body.f_grade,
+    f_reasonchange: req.body.f_reasonchange,
+    f_dateupdate: req.body.f_dateupdate,
+    f_period: req.body.f_period,
+    f_dateapprove: req.body.f_dateapprove,
+    f_loan: req.body.f_loan,
+    f_loanapprove: req.body.f_loanapprove,
+    f_reasonreject: req.body.f_reasonreject,
+    f_reasoncancle: req.body.f_reasoncancle,
+    f_daterecord: req.body.f_daterecord,
+    f_userlogin: req.body.f_userlogin,
+    f_project: req.body.f_project,
     f_status: req.body.f_status,
-    f_defalut: "0",
   });
   Finloan.saveAll()
     .then((result) => {
@@ -69,9 +82,9 @@ exports.saveController = (req, res, next) => {
 };
 
 exports.updateController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_id = req.params.id;
   finLoanModel
-    .update(f_code, req.body)
+    .update(f_id, req.body)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -85,9 +98,9 @@ exports.updateController = (req, res, next) => {
 };
 
 exports.searchController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_id = req.params.id;
   finLoanModel
-    .finOne(f_code)
+    .finOne(f_id)
     .then((result) => {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -102,9 +115,9 @@ exports.searchController = (req, res, next) => {
 };
 
 exports.deleteController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_id = req.params.id;
   finLoanModel
-    .delete(f_code)
+    .delete(f_id)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,

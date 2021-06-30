@@ -46,15 +46,26 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const Users = new quotationModel({
-    f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
+  const Users = new userModel({
     f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
+    f_lastname: req.body.f_lastname,
+    f_login_name: req.body.f_login_name,
+    f_login_password: req.body.f_login_password,
+    f_hash_password: req.body.f_hash_password,
+    f_salt_password: req.body.f_salt_password,
+    f_email: req.body.f_email,
+    f_mobile: req.body.f_mobile,
+    f_lineid: req.body.f_lineid,
+    f_company: req.body.f_company,
+    f_department: req.body.f_department,
+    f_position: req.body.f_position,
+    f_dateupdate: req.body.f_dateupdate,
+    f_usersupdate: req.body.f_usersupdate,
+    f_pic: req.body.f_pic,
     f_status: req.body.f_status,
-    f_defalut: "0",
+    f_admin_status: req.body.f_admin_status,
+    f_accounttype: req.body.f_accounttype,
+    f_activecode: req.body.f_activecode,
   });
   Users.saveAll()
     .then((result) => {
@@ -70,9 +81,9 @@ exports.saveController = (req, res, next) => {
 };
 
 exports.updateController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_acc_code = req.params.id;
   userModel
-    .update(f_code, req.body)
+    .update(f_acc_code, req.body)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -86,9 +97,9 @@ exports.updateController = (req, res, next) => {
 };
 
 exports.searchController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_acc_code = req.params.id;
   userModel
-    .finOne(f_code)
+    .finOne(f_acc_code)
     .then((result) => {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -103,9 +114,9 @@ exports.searchController = (req, res, next) => {
 };
 
 exports.deleteController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_acc_code = req.params.id;
   userModel
-    .delete(f_code)
+    .delete(f_acc_code)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,

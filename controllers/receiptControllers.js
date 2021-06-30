@@ -46,15 +46,13 @@ exports.getPageController = (req, res, next) => {
 };
 
 exports.saveController = (req, res, next) => {
-  const Receipt = new quotationModel({
-    f_bankname: req.body.f_bankname,
-    f_branch: req.body.f_branch,
-    f_name: req.body.f_name,
-    f_number: req.body.f_number,
-    f_codebank: req.body.f_codebank,
-    f_logo: req.body.f_logo,
+  const Receipt = new receiptModel({
+    f_bookingbo: req.body.f_bookingbo,
     f_status: req.body.f_status,
-    f_defalut: "0",
+    f_bookingreceipt: req.body.f_bookingreceipt,
+    f_contactreceipt: req.body.f_contactreceipt,
+    f_datebookingreceipt: req.body.f_datebookingreceipt,
+    f_datecontactreceipt: req.body.f_datecontactreceipt,
   });
   Receipt.saveAll()
     .then((result) => {
@@ -70,9 +68,9 @@ exports.saveController = (req, res, next) => {
 };
 
 exports.updateController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_id = req.params.id;
   receiptModel
-    .update(f_code, req.body)
+    .update(f_id, req.body)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -86,9 +84,9 @@ exports.updateController = (req, res, next) => {
 };
 
 exports.searchController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_id = req.params.id;
   receiptModel
-    .finOne(f_code)
+    .finOne(f_id)
     .then((result) => {
       res.status(201).json({
         message: lang.readeDatabase,
@@ -103,9 +101,9 @@ exports.searchController = (req, res, next) => {
 };
 
 exports.deleteController = (req, res, next) => {
-  const f_code = req.params.id;
+  const f_id = req.params.id;
   receiptModel
-    .delete(f_code)
+    .delete(f_id)
     .then(function (result) {
       res.status(201).json({
         message: lang.readeDatabase,

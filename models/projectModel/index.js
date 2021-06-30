@@ -25,7 +25,6 @@ class projectModel {
     f_foor = "",
     f_website = "",
     f_mobile = "",
-
     f_total = "",
     f_linenotify = "",
     f_status = "",
@@ -77,7 +76,7 @@ class projectModel {
     };
     return ProjectDB.create(items)
       .then((result) => {
-        console.log(result);
+        //  console.log(result);
         return result;
       })
       .catch((err) => {
@@ -85,7 +84,7 @@ class projectModel {
       });
   }
 
-  static update(f_code, sqlupdate) {
+  static update(f_codeproject, sqlupdate) {
     return ProjectDB.update(
       {
         f_projectname: sqlupdate.f_projectname,
@@ -106,7 +105,7 @@ class projectModel {
         f_tranfer: sqlupdate.f_tranfer,
         f_codelaw: sqlupdate.f_codelaw,
       },
-      { where: { f_code: f_code } }
+      { where: { f_codeproject: f_codeproject } }
     )
       .then((result) => {
         return result;
@@ -125,8 +124,8 @@ class projectModel {
         console.log(err);
       });
   }
-  static findone(f_code) {
-    return ProjectDB.findByPk(f_code)
+  static findone(f_codeproject) {
+    return ProjectDB.findByPk(f_codeproject)
       .then((result) => {
         return result;
       })
@@ -135,9 +134,9 @@ class projectModel {
       });
   }
 
-  static delete(f_code) {
+  static delete(f_codeproject) {
     return ProjectDB.destroy({
-      where: { f_code: f_code },
+      where: { f_codeproject: f_codeproject },
     })
       .then((result) => {
         return result;
@@ -147,13 +146,13 @@ class projectModel {
       });
   }
 
-  static approve(f_code) {
+  static approve(f_codeproject) {
     return ProjectDB.update(
       {
         f_status: 1,
       },
       {
-        where: { f_code: f_code },
+        where: { f_codeproject: f_codeproject },
       }
     )
       .then((result) => {
