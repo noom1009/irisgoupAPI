@@ -1,11 +1,11 @@
-const con = require("../config/mysql");
+const con = require("../../config/mysql");
+const db = require("../index");
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const path = require("path");
 const app = express();
 const quotation = require("../../schema/tblquotation/index");
-const db = require("../models/index");
 const Sequelize = require("sequelize");
 const QuotationDB = db.QuotationDB;
 const Op = db.Sequelize.Op;
@@ -14,7 +14,6 @@ class quotationModel {
   constructor({
     f_code = "",
     f_running = "",
-    f_type = "",
     f_project = "",
     f_unit = "",
     f_type = "",

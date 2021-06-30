@@ -1,11 +1,11 @@
-const con = require("../config/mysql");
+const con = require("../../config/mysql");
+const db = require("../index");
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const path = require("path");
 const app = express();
 const finLoan = require("../../schema/tblFinloan/index");
-const db = require("../models/index");
 const Sequelize = require("sequelize");
 const FinloanDB = db.FinloanDB;
 const Op = db.Sequelize.Op;
@@ -19,7 +19,6 @@ class FinloanModel {
     f_contactstart = "",
     f_dateapply = "",
     f_bankshortname = "",
-    f_unit = "",
     f_bankname = "",
     f_bankstatus = "",
     f_grade = "",
@@ -43,7 +42,6 @@ class FinloanModel {
     this.f_contactstart = f_contactstart;
     this.f_dateapply = f_dateapply;
     this.f_bankshortname = f_bankshortname;
-    this.f_unit = f_unit;
     this.f_bankname = f_bankname;
     this.f_bankstatus = f_bankstatus;
     this.f_grade = f_grade;
@@ -86,7 +84,7 @@ class FinloanModel {
     };
     return FinloanDB.create(finOther)
       .then((result) => {
-        console.log(result);
+  
         return result;
       })
       .catch((err) => {

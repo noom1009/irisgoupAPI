@@ -1,12 +1,11 @@
-const con = require("../config/mysql");
+const con = require("../../config/mysql");
+const db = require("../index");
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const path = require("path");
 const app = express();
-const items = require("../schema/items/index");
 const item = require("../../schema/tblProitem/index");
-const db = require("../model/index");
 const Sequelize = require("sequelize");
 const ItemsDB = db.ItemsDB;
 const Op = db.Sequelize.Op;
@@ -18,7 +17,6 @@ class ItemsModel {
     f_detail = "",
     f_remark = "",
     f_pricepro = "",
-    f_remark = "",
     f_status = "",
     f_type = "",
     f_showitem = "",
@@ -31,7 +29,6 @@ class ItemsModel {
     this.f_detail = f_detail;
     this.f_remark = f_remark;
     this.f_pricepro = f_pricepro;
-    this.f_remark = f_remark;
     this.f_status = f_status;
     this.f_type = f_type;
     this.f_showitem = f_showitem;
@@ -45,7 +42,6 @@ class ItemsModel {
       f_detail: this.f_detail,
       f_remark: this.f_remark,
       f_pricepro: this.f_pricepro,
-      f_remark: this.f_remark,
       f_status: this.f_status,
       f_type: this.f_type,
       f_showitem: this.f_showitem,
