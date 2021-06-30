@@ -31,4 +31,5 @@ exports.getPageController = async (req, res, next) => {
   res.json("Booking");
 };
 
+
 exports.bookingController = (req, res, next) => {};

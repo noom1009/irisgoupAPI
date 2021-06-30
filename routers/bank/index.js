@@ -19,9 +19,22 @@ router.get(
   function (req, res, next) {}
 );
 
+router.get(
+  "/:f_code",
+  bankControllers.searchController,
+  function (req, res, next) {}
+);
+
+router.post("/", bankControllers.saveController, function (req, res, next) {});
 router.post(
   "/",
-  bankControllers.getPageController,
+  bankControllers.updateController,
+  function (req, res, next) {}
+);
+
+router.delete(
+  "/:f_code",
+  bankControllers.deleteController,
   function (req, res, next) {}
 );
 

@@ -19,9 +19,26 @@ router.get(
   function (req, res, next) {}
 );
 
+router.get(
+  "/:f_code",
+  receiptControllers.searchController,
+  function (req, res, next) {}
+);
+
 router.post(
   "/",
-  receiptControllers.getPageController,
+  receiptControllers.saveController,
+  function (req, res, next) {}
+);
+router.post(
+  "/",
+  receiptControllers.updateController,
+  function (req, res, next) {}
+);
+
+router.delete(
+  "/:f_code",
+  receiptControllers.deleteController,
   function (req, res, next) {}
 );
 

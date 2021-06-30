@@ -19,9 +19,26 @@ router.get(
   function (req, res, next) {}
 );
 
+router.get(
+  "/:f_code",
+  roomplanControllers.searchController,
+  function (req, res, next) {}
+);
+
 router.post(
   "/",
-  roomplanControllers.getPageController,
+  roomplanControllers.saveController,
+  function (req, res, next) {}
+);
+router.post(
+  "/",
+  roomplanControllers.updateController,
+  function (req, res, next) {}
+);
+
+router.delete(
+  "/:f_code",
+  roomplanControllers.deleteController,
   function (req, res, next) {}
 );
 

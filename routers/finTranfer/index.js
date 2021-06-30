@@ -19,10 +19,26 @@ router.get(
   function (req, res, next) {}
 );
 
-router.post(
-  "/",
-  finTranferControllers.getPageController,
+router.get(
+  "/:f_code",
+  finTranferControllers.searchController,
   function (req, res, next) {}
 );
 
+router.post(
+  "/",
+  finTranferControllers.saveController,
+  function (req, res, next) {}
+);
+router.post(
+  "/",
+  finTranferControllers.updateController,
+  function (req, res, next) {}
+);
+
+router.delete(
+  "/:f_code",
+  finTranferControllers.deleteController,
+  function (req, res, next) {}
+);
 module.exports = router;

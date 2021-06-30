@@ -26,7 +26,7 @@ const upload = multer({ dest: "uploads/" });
 const now = new Date();
 const dateString = moment(now).tz("Asia/Bangkok").format("D/M/Y");
 const dateFormat = moment(now).tz("Asia/Bangkok").format("YYYY-MM-DD hh:mm:ss");
-const UserModel = require("../models/userModel/index");
+const UserModel = require("../models/userModel/user");
 const AuthenDB = db.AuthenDB;
 
 exports.getPageController = async (req, res, next) => {
@@ -44,7 +44,6 @@ exports.logInController = async (req, res, next) => {
   const { f_login_name = "", f_login_password } = req.body;
   UserModel.findByEmail({ f_login_name: f_login_name })
     .then((result) => {
-      console.log(result)
       if (result.length !== 0) {
         const f_name = result.f_name;
         const f_lastname = result.f_lastname;
@@ -54,7 +53,7 @@ exports.logInController = async (req, res, next) => {
         const f_position = result.f_position;
         const f_acc_id = result.f_acc_id;
         const f_accounttype = result.f_accounttype;
-        let dataUsers = result; 
+        let dataUsers = result;
         return bcrypt
           .compare(f_login_password, result.f_hash_password)
           .then((result) => {
@@ -81,17 +80,17 @@ exports.logInController = async (req, res, next) => {
               req.session.f_position = f_position;
               req.session.f_admin_status = f_admin_status;
               req.session.f_accounttype = f_accounttype;
-              res.header('auth-token', token).send(token);
+              res.header("auth-token", token).send(token);
               res.status(200).json({
                 token: jwtToken,
                 dataUsers: dataUsers,
-                message: lang.usersSuccess
-              })
+                message: lang.usersSuccess,
+              });
             }
           })
           .catch((error) => {
             res.status(500).json({
-              message: error  +': '+ lang.loginFailed,
+              message: error + ": " + lang.loginFailed,
             });
           });
       } else {
@@ -102,7 +101,7 @@ exports.logInController = async (req, res, next) => {
     })
     .catch((err) => {
       res.status(500).json({
-        message: err + ': ' + lang.loginFailed,
+        message: err + ": " + lang.loginFailed,
       });
     });
 };

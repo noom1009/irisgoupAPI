@@ -19,10 +19,22 @@ router.get(
   function (req, res, next) {}
 );
 
-router.post(
-  "/",
-  userControllers.getPageController,
+router.get(
+  "/:f_code",
+  userControllers.searchController,
   function (req, res, next) {}
 );
 
+router.post("/", userControllers.saveController, function (req, res, next) {});
+router.post(
+  "/",
+  userControllers.updateController,
+  function (req, res, next) {}
+);
+
+router.delete(
+  "/:f_code",
+  userControllers.deleteController,
+  function (req, res, next) {}
+);
 module.exports = router;

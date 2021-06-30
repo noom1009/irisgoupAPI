@@ -9,11 +9,11 @@ const md5 = require("md5");
 const bcrypt = require("bcrypt");
 const env = require("../../config/env");
 const saltRounds = env.saltRounds;
-const users = require("../../schema/tblAccount/index");
+const user = require("../../schema/tblUser/index");
 const db = require("../index");
 const log = require("../../middleware/logger");
 const Sequelize = require("sequelize");
-const UserDB = db.UserDB;
+const UsesrDB = db.UsesrDB;
 const Op = db.Sequelize.Op;
 
 class userModel {
@@ -71,7 +71,7 @@ class userModel {
       f_pic: this.f_pic,
       f_authentication: this.f_authentication,
     };
-    return UserDB.create(newData)
+    return UsesrDB.create(newData)
       .then((result) => {
         return result;
       })
@@ -80,7 +80,7 @@ class userModel {
       });
   }
   static findAll() {
-    return UserDB.findAll()
+    return UsesrDB.findAll()
       .then((result) => {
         return result;
       })
@@ -91,7 +91,7 @@ class userModel {
   }
 
   static findByEmail({ f_login_name = "" }) {
-    return UserDB.findOne({
+    return UsesrDB.findOne({
       where: { f_login_name: f_login_name, f_status: "1" },
     })
       .then((result) => {
@@ -107,7 +107,7 @@ class userModel {
   }
 
   static findcountUsers() {
-    return UserDB.findAndCountAll({
+    return UsesrDB.findAndCountAll({
       where: {
         f_status: 0,
       },
@@ -122,7 +122,7 @@ class userModel {
   }
 
   static deleteUsers(f_acc_id) {
-    return UserDB.destroy({
+    return UsesrDB.destroy({
       where: { f_acc_id: f_acc_id },
     })
       .then((result) => {
@@ -135,7 +135,7 @@ class userModel {
   }
 
   static approveUsers(f_acc_id) {
-    return UserDB.update(
+    return UsesrDB.update(
       {
         f_status: 1,
       },
@@ -153,7 +153,7 @@ class userModel {
   }
 
   static findUserone(f_acc_id) {
-    return UserDB.findByPk(f_acc_id)
+    return UsesrDB.findByPk(f_acc_id)
       .then((result) => {
         console.log(result);
         return result;
@@ -164,7 +164,7 @@ class userModel {
   }
 
   static updateUsers(f_acc_id, sqlupdate) {
-    return UserDB.update(
+    return UsesrDB.update(
       {
         f_name: sqlupdate.f_name,
         f_lastname: sqlupdate.f_lastname,
