@@ -26,9 +26,96 @@ const upload = multer({ dest: "uploads/" });
 const now = new Date();
 const dateString = moment(now).tz("Asia/Bangkok").format("D/M/Y");
 const dateFormat = moment(now).tz("Asia/Bangkok").format("YYYY-MM-DD hh:mm:ss");
+const finDownModel = require("../models/finDownModel/index");
+const FindownDB = db.FindownDB;
 
-exports.getPageController = async (req, res, next) => {
-  res.json("Fin Down");
+exports.getPageController = (req, res, next) => {
+  FindownDB.findAll()
+    .then((result) => {
+      res.status(201).json({
+        data: result,
+        message: lang.readeDatabase,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: error,
+      });
+    });
+};
+
+exports.saveController = (req, res, next) => {
+  const Findown = new companyModel({
+    f_bankname: req.body.f_bankname,
+    f_branch: req.body.f_branch,
+    f_name: req.body.f_name,
+    f_number: req.body.f_number,
+    f_codebank: req.body.f_codebank,
+    f_logo: req.body.f_logo,
+    f_status: req.body.f_status,
+    f_defalut: "0",
+  });
+  Findown.saveAll()
+    .then((result) => {
+      res.status(201).json({
+        message: lang.readeDatabase,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: error + ": " + lang.createDataError,
+      });
+    });
+};
+
+exports.updateController = (req, res, next) => {
+  const f_code = req.params.id;
+  finDownModel
+    .update(f_code, req.body)
+    .then(function (result) {
+      res.status(201).json({
+        message: lang.readeDatabase,
+      });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err + ": " + lang.updateDataError + ": " + id,
+      });
+    });
+};
+
+exports.searchController = (req, res, next) => {
+  const f_code = req.params.id;
+  finDownModel
+    .finOne(f_code)
+    .then((result) => {
+      res.status(201).json({
+        message: lang.readeDatabase,
+        resultUsers: result,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: error,
+      });
+    });
+};
+
+exports.deleteController = (req, res, next) => {
+  const f_code = req.params.id;
+  finDownModel
+    .delete(f_code)
+    .then(function (result) {
+      res.status(201).json({
+        message: lang.readeDatabase,
+        resultUsers: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err + ": " + lang.updateDataError + ": " + id,
+      });
+    });
 };
 
 exports.finDownController = (req, res, next) => {};

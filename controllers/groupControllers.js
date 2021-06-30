@@ -27,8 +27,97 @@ const now = new Date();
 const dateString = moment(now).tz("Asia/Bangkok").format("D/M/Y");
 const dateFormat = moment(now).tz("Asia/Bangkok").format("YYYY-MM-DD hh:mm:ss");
 
-exports.getPageController = async (req, res, next) => {
-  res.json("Group");
+const groupUserModel = require("../models/groupUserModel/index");
+const GroupUserDB = db.GroupUserDB;
+
+exports.getPageController = (req, res, next) => {
+  GroupUserDB.findAll()
+    .then((result) => {
+      res.status(201).json({
+        data: result,
+        message: lang.readeDatabase,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: error,
+      });
+    });
+};
+
+exports.saveController = (req, res, next) => {
+  const groupUsers = new companyModel({
+    f_bankname: req.body.f_bankname,
+    f_branch: req.body.f_branch,
+    f_name: req.body.f_name,
+    f_number: req.body.f_number,
+    f_codebank: req.body.f_codebank,
+    f_logo: req.body.f_logo,
+    f_status: req.body.f_status,
+    f_defalut: "0",
+  });
+  groupUsers
+    .saveAll()
+    .then((result) => {
+      res.status(201).json({
+        message: lang.readeDatabase,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: error + ": " + lang.createDataError,
+      });
+    });
+};
+
+exports.updateController = (req, res, next) => {
+  const f_code = req.params.id;
+  groupUserModel
+    .update(f_code, req.body)
+    .then(function (result) {
+      res.status(201).json({
+        message: lang.readeDatabase,
+      });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err + ": " + lang.updateDataError + ": " + id,
+      });
+    });
+};
+
+exports.searchController = (req, res, next) => {
+  const f_code = req.params.id;
+  groupUserModel
+    .finOne(f_code)
+    .then((result) => {
+      res.status(201).json({
+        message: lang.readeDatabase,
+        resultUsers: result,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: error,
+      });
+    });
+};
+
+exports.deleteController = (req, res, next) => {
+  const f_code = req.params.id;
+  groupUserModel
+    .delete(f_code)
+    .then(function (result) {
+      res.status(201).json({
+        message: lang.readeDatabase,
+        resultUsers: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err + ": " + lang.updateDataError + ": " + id,
+      });
+    });
 };
 
 exports.groupController = (req, res, next) => {};
